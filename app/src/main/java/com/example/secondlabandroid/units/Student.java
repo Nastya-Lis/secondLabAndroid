@@ -1,33 +1,28 @@
 package com.example.secondlabandroid.units;
 
+import com.example.secondlabandroid.organization.University;
+
 public class Student extends Person {
-    String institution;
-    Person person;
+    University university;
+    //Person person;
     Integer mark;
 
     public Student(){
 
     }
-    public Student(String institution) {
-        this.institution = institution;
-    }
-
     public Student(/*String name, String surName, Integer age, String curse ,
-                   University university, */Person person,String institution,int mark) {
+                   University university, *//*Person person,*/University university,int mark) {
        // super(name, surName, age, curse,university);
-        this.person = person;
-        this.institution = institution;
+        //this.person = person;
+        this.university = university;
         this.mark = mark;
     }
-    public String getInstitution() {
-        return institution;
+    public University getUniversity() {
+        return university;
     }
 
-    public void setInstitution(String institution) {
-        if(checkName(institution) == true)
-        this.institution = institution;
-        else
-            this.institution = null;
+    public void setUniversity(University university) {
+        this.university = university;
     }
 
     public int getMark() {
@@ -39,5 +34,13 @@ public class Student extends Person {
         this.mark = mark;
         else
             this.mark = null;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" + super.toString() +
+                "university=" + university +
+                ", mark=" + mark +
+                '}';
     }
 }

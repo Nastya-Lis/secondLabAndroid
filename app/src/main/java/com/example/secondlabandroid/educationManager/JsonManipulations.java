@@ -13,6 +13,7 @@ import com.example.secondlabandroid.units.Person;
 import com.example.secondlabandroid.units.Student;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.SerializationConfig;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,10 +23,10 @@ import java.util.ArrayList;
 
 public class JsonManipulations {
 
-    File fromJson;
+    //File fromJson;
     ObjectMapper objectMapper;
 
-    private boolean isFileExists(File file) {
+    public boolean isFileExists(File file) {
         if(file!=null) {
             if (!file.exists()) {
                 try {
@@ -39,7 +40,7 @@ public class JsonManipulations {
             }
             else {
                 //file.delete();
-                Log.i("Log_json", "File exists");
+                Log.i("Log_json", "File existssssssssss");
                 return true;
             }
         }
@@ -50,23 +51,36 @@ public class JsonManipulations {
 
     }
 
-    public void serializationToJson(File file, Person person){
+    public void serializationToJson(File file, Staff staffPerson){
 
       if(isFileExists(file)){
           objectMapper = new ObjectMapper();
-          fromJson = file;
+          //fromJson = file;
           try {
-              objectMapper.writeValue(file,person);
+              //objectMapper.writeValue(file,person);
+             // FileWriter fileWriter = new FileWriter(file,true);
+             // objectMapper.writeValue(fileWriter,person);
+              objectMapper.writerWithDefaultPrettyPrinter().writeValue(file,staffPerson);
+             // fromJson = file;
           }
           catch (IOException e) {
-             Log.i("Log_json","Oops, your serialization sucks");
+             Log.i("Log_json","Oops, your serialization doesn't work");
           }
       }
 
     }
-    public ArrayList<Person> deserializationFromJson(){
-        if(fromJson!=null){
+    //под сомнением
+    public Staff deserializationFromJson(File file){
+        if(file!=null){
             try {
+               objectMapper = new ObjectMapper();
+                Staff staff = objectMapper.readValue(file,Staff.class);
+                return staff;
+            } catch (IOException e) {
+                Log.i("Log_json","Couldnt read michael");
+                return null;
+            }
+           /* try {
                 Student person = objectMapper.readValue(fromJson,Student.class);
                 ArrayList<Person> list = new ArrayList<>();
                 list.add(person);
@@ -82,10 +96,10 @@ public class JsonManipulations {
                     Log.i("Log_json","Couldnt read michael ");
                     return new ArrayList<>();
                 }
-            }
+            }*/
         }
         else{
-            return new ArrayList<>();
+            return null;
         }
     }
 }

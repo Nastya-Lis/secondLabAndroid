@@ -3,7 +3,7 @@ package com.example.secondlabandroid.units;
 import com.example.secondlabandroid.organization.University;
 
 public class Listener extends Person {
-    Person person;
+   // Person person;
     String Organization;
 
     public Listener(){
@@ -14,12 +14,12 @@ public class Listener extends Person {
         Organization = organization;
     }
 
-    public Listener(/*String name, String surName, Integer age, String curse,
-                    University university,*/Person person,String organization) {
+ /*   public Listener(*//*String name, String surName, Integer age, String curse,
+                    University university,*//**//*Person person,*//*String organization) {
         //super(name, surName, age,curse,university);
         this.person = person;
         Organization = organization;
-    }
+    }*/
     public String getOrganization() {
         return Organization;
     }
@@ -33,8 +33,7 @@ public class Listener extends Person {
 
     @Override
     public String toString() {
-        return "Listener{" +
-                "person=" + person +
+        return "Listener{" + super.toString() +
                 ", Organization='" + Organization + '\'' +
                 '}';
     }

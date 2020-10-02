@@ -2,23 +2,35 @@ package com.example.secondlabandroid.units;
 
 import com.example.secondlabandroid.organization.University;
 
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
+)
+@JsonSubTypes(
+        value = {
+                @JsonSubTypes.Type(value = Student.class),
+                @JsonSubTypes.Type(value = Listener.class)
+        }
+)
 public abstract class Person {
     String name;
     String surName;
     Integer age;
     String curse;
-    University university;
+
 
     public Person(){
 
     }
 
-    public Person(String name,String surName,Integer age,String curse,University university){
+    public Person(String name,String surName,Integer age,String curse){
         this.name = name;
         this.surName = surName;
         this.age = age;
         this.curse = curse;
-        this.university = university;
     }
 
     protected Boolean checkName(String name){
@@ -82,15 +94,6 @@ public abstract class Person {
                 ", surName='" + surName + '\'' +
                 ", age=" + age +
                 ", curse='" + curse + '\'' +
-                ", university=" + university +
                 '}';
     }
-
-    /* public University getUniversity() {
-        return university;
-    }
-
-    public void setUniversity(University university) {
-        this.university = university;
-    }*/
 }
