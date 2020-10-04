@@ -14,12 +14,7 @@ public class Listener extends Person {
         Organization = organization;
     }
 
- /*   public Listener(*//*String name, String surName, Integer age, String curse,
-                    University university,*//**//*Person person,*//*String organization) {
-        //super(name, surName, age,curse,university);
-        this.person = person;
-        Organization = organization;
-    }*/
+
     public String getOrganization() {
         return Organization;
     }

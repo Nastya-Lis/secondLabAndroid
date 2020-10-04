@@ -27,7 +27,6 @@ public class Staff {
     }
 
     }
-    //functional interface
     interface OperationAdd{
     void addOperation(Person person);
     }

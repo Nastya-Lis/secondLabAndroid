@@ -2,18 +2,16 @@ package com.example.secondlabandroid.units;
 
 import com.example.secondlabandroid.organization.University;
 
+import java.util.Optional;
+
 public class Student extends Person {
     University university;
-    //Person person;
     Integer mark;
 
     public Student(){
 
     }
-    public Student(/*String name, String surName, Integer age, String curse ,
-                   University university, *//*Person person,*/University university,int mark) {
-       // super(name, surName, age, curse,university);
-        //this.person = person;
+    public Student(University university,int mark) {
         this.university = university;
         this.mark = mark;
     }
@@ -43,4 +41,7 @@ public class Student extends Person {
                 ", mark=" + mark +
                 '}';
     }
+
+    static public Optional<University> giveSomeStaffs(Student stud)
+    {return Optional.ofNullable(stud.getUniversity());}
 }

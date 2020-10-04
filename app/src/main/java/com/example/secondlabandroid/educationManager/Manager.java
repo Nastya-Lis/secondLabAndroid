@@ -22,6 +22,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Stream;
 
@@ -44,6 +45,13 @@ public class Manager implements IAction{
                students.sort((a, b) -> String.valueOf(b.getMark()).
                        compareTo(String.valueOf(a.getMark())) );
                List<Student> topStudents = students.subList(0,3);
+               Optional<University> printStud;
+               for(int i =0; i < topStudents.size(); i++){
+                   printStud = Student.giveSomeStaffs(topStudents.get(i));
+                  if(printStud.isPresent()){
+                       Log.i("Log_optional","Optional value:" + "" + printStud.get());
+                   }
+               }
                return topStudents;
             }
             else{
@@ -64,7 +72,6 @@ public class Manager implements IAction{
 
     public void createdRandomPerson() throws ExclusivePeopleException
     {
-       // boolean kindOfPeople = (new Random()).nextBoolean();
         if((new Random()).nextBoolean()){
             person = new Student();
             ((Student)person).setUniversity((University.values()
@@ -101,18 +108,8 @@ public class Manager implements IAction{
         return staff1;
     }
 
-//или лучше было бы сделать конструктор с/ без параметров
     public void takeFileFromActivity(File file){
         this.file = file;
     }
 
-   /* static class GeneratedPeople{
-        public static String[] getNames(){return new String[]{"Настя", "Катя", "Диана",
-                "Лера", "Оля"}; }
-        public static String[] getSurnames(){return  new String[]{"Лисункова", "Гарляк","Керезь",
-                "Япубенко", "Буденок"};}
-        public static String[] getCurses(){return new String[]{"C#","Java","Js","Python","Kotlin"};}
-        public static  String[] getOrganizations(){return new String[]{"Itechart","EPAM","SAP",
-                "Belhard"};}
-    }*/
 }

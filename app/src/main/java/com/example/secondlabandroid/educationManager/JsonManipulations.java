@@ -22,8 +22,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class JsonManipulations {
-
-    //File fromJson;
     ObjectMapper objectMapper;
 
     public boolean isFileExists(File file) {
@@ -40,7 +38,7 @@ public class JsonManipulations {
             }
             else {
                 //file.delete();
-                Log.i("Log_json", "File existssssssssss");
+                Log.i("Log_json", "File exists");
                 return true;
             }
         }
@@ -55,13 +53,8 @@ public class JsonManipulations {
 
       if(isFileExists(file)){
           objectMapper = new ObjectMapper();
-          //fromJson = file;
           try {
-              //objectMapper.writeValue(file,person);
-             // FileWriter fileWriter = new FileWriter(file,true);
-             // objectMapper.writeValue(fileWriter,person);
               objectMapper.writerWithDefaultPrettyPrinter().writeValue(file,staffPerson);
-             // fromJson = file;
           }
           catch (IOException e) {
              Log.i("Log_json","Oops, your serialization doesn't work");
@@ -69,7 +62,7 @@ public class JsonManipulations {
       }
 
     }
-    //под сомнением
+
     public Staff deserializationFromJson(File file){
         if(file!=null){
             try {
@@ -77,7 +70,7 @@ public class JsonManipulations {
                 Staff staff = objectMapper.readValue(file,Staff.class);
                 return staff;
             } catch (IOException e) {
-                Log.i("Log_json","Couldnt read michael");
+                Log.i("Log_json","Couldn't read file");
                 return null;
             }
            /* try {

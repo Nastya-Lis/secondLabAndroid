@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             manager.createdRandomPerson();
-            //Log.i("Log_name",manager.person.getName());
             manager.createdRandomPerson();
             manager.createdRandomPerson();
             manager.createdRandomPerson();
@@ -79,12 +78,5 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Log_student", s.toString());
             }
         }
-        /* Staff staff1 = manager.jsonManipulations.deserializationFromJson();
-        Log.i("Log_smth",String.valueOf(staff.collectionStaffPeople.size()) + "lalalal");
-        for (Person i: staff1.collectionStaffPeople) {
-            Log.i("Log_smth", i.toString());
-        }*/
-            // manager.jsonManipulations.serializationToJson(file);
-            // manager.jsonManipulations.deserializationFromJson();
-        }
     }
+}
